@@ -1,47 +1,22 @@
-class Solution {
+class Solution
+{
 public:
-    string longestCommonPrefix(vector<string>& strs)
+    bool isValid(string s) 
     {
-        bool match = true;
-        int commonEnd = 0, minLength = 0;
-        string result = "";
-        
-        if(strs.size() == 0)
+        stack <char> st;
+        if(s.size() == 0)       return true;
+        if(s.size()%2 != 0)     return false;
+        for(int i = 0; i < s.size(); i++)
         {
-            return result;
-        }
-        else if(strs.size() == 1)
-        {
-            return strs[0];
-        }
-        else
-        {
-            minLength = strs[0].length();
-        }
-        
-        for(int i = 1; i<strs.size();i++)
-        {
-            int curLen = strs[i].length();
-            minLength = (curLen < minLength)? curLen : minLength;
-        }
-        for(int k = 0; match && k<minLength;k++)
-        {
-            int j = 1;
-            while(match && j<strs.size())
+            if(s[i] == '(' || s[i] == '[' ||s[i] == '{') st.push(s[i]);
+            else if(!st.empty())
             {
-                match = strs[j-1][k] == strs[j][k];
-                if(match && j == strs.size() - 1)
-                {
-                    commonEnd = k;
-                    result = strs[j].substr(0,commonEnd+1);
-                }
-                if(!match)
-                {
-                    break;
-                }
-                j++;
+                if(s[i] == ')' && st.top()!='(') return false;
+                if(s[i] == ']' && st.top()!='[') return false;
+                if(s[i] == '}' && st.top()!='{') return false;
+                st.pop();
             }
         }
-        return result;
+        return st.empty();
     }
 };
