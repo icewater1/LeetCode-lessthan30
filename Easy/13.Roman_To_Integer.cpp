@@ -1,60 +1,18 @@
 class Solution {
 public:
-    int getNum(char& symb)
-    {
-        switch(symb)
-        {
-            case 'M':
-                return 1000;
-            case 'D':
-                return 500;
-            case 'C':
-                return 100;
-            case 'L':
-                return 50;
-            case 'X':
-                return 10;
-            case 'V':
-                return 5;
-            case 'I':
-                return 1;
-            default:
-                return 0;
-        }
-    }
     int romanToInt(string s) 
     {
-        int result = 0, i = 0, j = 0, curSum = 0;
-        curSum = getNum(s[i]);
-        while(i<s.length()&&j<s.length())
+        string Syms = "IVXLCDM";
+        int Nums[7] = {1,5,10,50,100,500,1000};
+        
+        if(s.empty())return 0;
+        int result = Nums[Syms.find(s[0])], prevNum = result;
+        for( int i = 1; i< s.length(); i++)
         {
-            j = i+1;
-            if(getNum(s[i])==getNum(s[j]))
-            {
-                curSum = !curSum? getNum(s[j])*2 : curSum + getNum(s[j]);
-            }
-            else if(getNum(s[i])<getNum(s[j]))
-            {
-                curSum = !curSum? -getNum(s[i]): -curSum;
-                curSum += getNum(s[j]);
-            }
-            else
-            {
-                if(!curSum)
-                {
-                    result += getNum(s[i]);
-                }
-                else
-                {
-                    result += curSum;
-                    curSum = 0;
-                }
-            }
-            i++;
-        }
-        if(curSum)
-        {
-            result+=curSum;
+            int curNum = Nums[Syms.find(s[i])];
+            result += curNum;
+            if(curNum > prevNum) result -=  2*prevNum;
+            prevNum = curNum;
         }
         return result;
     }
