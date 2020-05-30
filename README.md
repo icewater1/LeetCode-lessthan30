@@ -1,4 +1,4 @@
-# LeetCode-lessthen30Solve
+# LeetCode-lessthen30
 LeetCode 要30行以內解題(不包括題目注解)
 
 ## 解題進度
