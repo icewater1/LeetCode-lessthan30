@@ -8,11 +8,7 @@ public:
         {
             for(int j=i+1; j< nums.size(); j++)
             {
-                if(target - nums[i] == nums[j])
-                {
-                    return {i,j};	
-					          // Elemerate all combination until meet exact sum
-                }
+                if(target == nums[i] + nums[j]) return {i,j};
             }
         }
         return result;
