@@ -11,10 +11,10 @@ LeetCode 要30行以內解題(不包括題目注解)
 ## 奇技淫巧收集
 
 ### 796. Rotate String (Easy)
-class Solution {
-public:
-    bool rotateString(string A, string B) {
-        if (A.length() != B.length()) return false;
-        return (A+A).find(B) != -1;
-    }
-};
+    class Solution {
+    public:
+        bool rotateString(string A, string B) {
+            if (A.length() != B.length()) return false;
+            return (A+A).find(B) != -1;
+        }
+    };
