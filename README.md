@@ -1,9 +1,9 @@
-# LeetCode-cleanSolve
-LeetCode 解題小記錄,隨心,歡迎交流
+# LeetCode-lessthen30Solve
+LeetCode 要30行以內解題(不包括題目注解)
 
 ## 解題進度
 ### Easy:
-**18**題 (20/5/2020)
+**28**題 (31/5/2020)
 
 ### Medium:
 **2**題 (18/5/2020)
