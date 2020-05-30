@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool rotateString(string A, string B) {
+        if(A.empty() && B.empty())return true;
+        if(A.length() != B.length()) return false;
+        
+        int location = B.find(A[0]);
+        while(location != -1){
+            if(A == B.substr(location)+B.substr(0,location)) return true;
+            int subB = B.substr(location+1).size();
+            location = B.substr(location+1).find(A[0]);
+            if(location != -1)location += B.size() - subB;
+        }
+        return false;
+    }
+};
