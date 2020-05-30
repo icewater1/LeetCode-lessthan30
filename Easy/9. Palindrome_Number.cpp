@@ -2,13 +2,11 @@ class Solution {
 public:
 int reverse(int x)
 {
-	int dig = 1;
-    int result = 0;
+	int dig = 1, result = 0;
 	for(int tempRes = x; tempRes >= 10; dig++)
 	{
 		tempRes /= 10;
 	}
-    
 	for (int i = dig; i > 0; i--)
 	{
         int num = 0;
