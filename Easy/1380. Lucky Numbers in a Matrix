@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> luckyNumbers (vector<vector<int>>& matrix) {
+        vector<int> minInRow (matrix.size());
+        vector<int> maxInCol(matrix[0].size(),0);
+        
+        int row = matrix.size(),col = matrix[0].size();
+        for(int i = 0; i < row;i++)
+        {
+            int minimum = 100000;
+            for(int j = 0; j < col; j++)
+            {
+                minimum = min(matrix[i][j],minimum);
+                maxInCol[j] = max(matrix[i][j],maxInCol[j]);
+            }
+            minInRow[i] = minimum;
+        }
+
+        vector<int> res;
+        for(int i = 0; i < minInRow.size();i++)
+        {
+            for(int j = 0; j < maxInCol.size(); j++)
+            {
+                if(maxInCol[j] == minInRow[i]) res.push_back(minInRow[i]);
+            }
+        }
+        return res;
+    }
+};
