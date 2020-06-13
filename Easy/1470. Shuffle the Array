@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        if (n == 1)return nums;
+        vector<int> res(nums.size(),0);
+        for(int i = 0; i < n;i++)
+        {
+            res[2*i] = nums[i];
+        }
+        for(int j = 0; j < n;j++)
+        {
+            res[2*j+1] = nums[n+j];
+        }
+        return res;
+    }
+};
